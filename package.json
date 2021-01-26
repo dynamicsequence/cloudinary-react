@@ -61,7 +61,8 @@
   },
   "dependencies": {
     "cloudinary-core": "^2.11.3",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "video.js": "^7.10.2"
   },
   "peerDependencies": {
     "react": "^16.3.3 || ^17.0.0"
