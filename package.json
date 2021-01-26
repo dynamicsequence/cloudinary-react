@@ -1,17 +1,17 @@
 {
-  "name": "cloudinary-react",
+  "name": "@dynamic-sequence/cloudinary-react",
   "version": "1.6.8",
   "description": "Present Cloudinary images and videos using React components",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --require @babel/register test/.setup.js --recursive test",
+    "test": "mocha --require @babel/register test/.setup.js --recursive test",
     "test:all": "run-s build test test-dist test-lib test:e2e",
     "test-dist": "TEST_SUBJECT=dist node_modules/.bin/mocha --require @babel/register test/.setup.js --recursive test",
     "test-lib": "TEST_SUBJECT=lib node_modules/.bin/mocha --require @babel/register test/.setup.js --recursive test",
     "pretest:e2e": "npm run build && npm pack && cpy cloudinary-react-*.tgz e2e-test --rename=cloudinary-react.tgz",
     "test:e2e": "cd ./e2e-test && npm run test",
-    "prebuild": "node_modules/.bin/babel src --out-dir lib --copy-files ",
-    "build": "node_modules/.bin/webpack && npm run bundlewatch",
+    "prebuild": "babel src --out-dir lib --copy-files ",
+    "build": "webpack && npm run bundlewatch",
     "bundlewatch": "bundlewatch --config ./bundlewatch.config.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "del-cli docs && build-storybook -c .storybook -o docs",
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cloudinary/cloudinary-react.git"
+    "url": "git+https://github.com/dynamicsequence/cloudinary-react.git"
   },
-  "author": "Cloudinary",
+  "author": "Dynamic Sequence",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cloudinary/cloudinary-react/issues"
   },
-  "homepage": "https://github.com/cloudinary/cloudinary-react#readme",
+  "homepage": "https://github.com/dynamicsequence/cloudinary-react",
   "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.2",
@@ -71,5 +71,9 @@
     "src",
     "lib",
     "dist"
-  ]
+  ],
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  }
 }
