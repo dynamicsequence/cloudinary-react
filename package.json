@@ -1,6 +1,6 @@
 {
   "name": "@dynamic-sequence/cloudinary-react",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "description": "Present Cloudinary images and videos using React components",
   "main": "lib/index.js",
   "scripts": {
