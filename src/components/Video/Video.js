@@ -150,35 +150,9 @@ class Video extends CloudinaryComponent {
     }
   };
 
-  componentDidMount() {
-    const { sources } = this.getVideoTagProps();
-    const videoJsOptions = {
-      autoplay: false,
-      playbackRates: [0.5, 1, 1.25, 1.5, 2],
-      width: 720,
-      height: 300,
-      controls: true,
-      sources,
-    };
-    // instantiate video.js
-    this.player = videojs(
-      this.videoNode,
-      videoJsOptions,
-      function onPlayerReady() {
-        console.log('onPlayerReady', this);
-      }
-    );
-  }
-
   componentDidUpdate() {
     // Load video on props change
     this.reloadVideo();
-  }
-
-  componentWillUnmount() {
-    if (this.player) {
-      this.player.dispose();
-    }
   }
 
   /**
@@ -193,18 +167,38 @@ class Video extends CloudinaryComponent {
     } = this.getVideoTagProps();
 
     return (
-      <div data-vjs-player>
-        <video
-          ref={this.attachRef}
-          {...tagAttributes}
-          ref={(node) => (this.videoNode = node)}
-          className="video-js"
-        >
+      <>
+        <div id="video-controls" class="controls" data-state="hidden">
+          <button id="playpause" type="button" data-state="play">
+            Play/Pause
+          </button>
+          <button id="stop" type="button" data-state="stop">
+            Stop
+          </button>
+          <div class="progress">
+            <progress id="progress" value="0" min="0">
+              <span id="progress-bar"></span>
+            </progress>
+          </div>
+          <button id="mute" type="button" data-state="mute">
+            Mute/Unmute
+          </button>
+          <button id="volinc" type="button" data-state="volup">
+            Vol+
+          </button>
+          <button id="voldec" type="button" data-state="voldown">
+            Vol-
+          </button>
+          <button id="fs" type="button" data-state="go-fullscreen">
+            Fullscreen
+          </button>
+        </div>
+        <video ref={this.attachRef} {...tagAttributes}>
           {sources}
           {fallback}
           {children}
         </video>
-      </div>
+      </>
     );
   }
 }
